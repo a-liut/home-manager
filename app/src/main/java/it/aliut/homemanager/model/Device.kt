@@ -9,6 +9,8 @@ data class Device(
     val name: String,
     @SerializedName("address")
     val address: String,
+    @SerializedName("data")
+    val data: List<String>,
     @SerializedName("online")
     val online: Boolean,
     @SerializedName("created_at")
