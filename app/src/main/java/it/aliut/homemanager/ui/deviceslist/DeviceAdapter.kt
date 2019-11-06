@@ -19,7 +19,6 @@ class DeviceAdapter(private val clickListener: OnItemClickListener) :
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_deviceitem, parent, false)
 
-
         return DeviceViewHolder(view)
     }
 
