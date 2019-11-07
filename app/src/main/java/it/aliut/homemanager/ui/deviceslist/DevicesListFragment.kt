@@ -1,20 +1,20 @@
 package it.aliut.homemanager.ui.deviceslist
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import it.aliut.homemanager.R
 import it.aliut.homemanager.model.Device
 import it.aliut.homemanager.net.RequestState
 import kotlinx.android.synthetic.main.fragment_deviceslist.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DevicesListFragment : Fragment(), DeviceAdapter.OnItemClickListener {
+class DevicesListFragment : Fragment(), DeviceAdapter.OnItemClickListener,
+    SwipeRefreshLayout.OnRefreshListener {
 
     companion object {
         fun newInstance() = DevicesListFragment()
@@ -35,8 +35,11 @@ class DevicesListFragment : Fragment(), DeviceAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         prepareRecyclerView()
+        prepareSwipeRefresh()
 
         viewModel.devices.observe(this, Observer { pagedList ->
+            swiperefreshlayout_deviceslist_swiperefresh.isRefreshing = false
+
             adapter.submitList(pagedList)
         })
 
@@ -48,6 +51,12 @@ class DevicesListFragment : Fragment(), DeviceAdapter.OnItemClickListener {
         })
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.menu_listfragment, menu)
+    }
+
     private fun prepareRecyclerView() {
         recyclerview_deviceslist_list.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -57,8 +66,16 @@ class DevicesListFragment : Fragment(), DeviceAdapter.OnItemClickListener {
         recyclerview_deviceslist_list.adapter = adapter
     }
 
+    private fun prepareSwipeRefresh() {
+        swiperefreshlayout_deviceslist_swiperefresh.setOnRefreshListener(this)
+    }
+
     override fun onDeviceClicked(device: Device) {
         // Do nothing by now
+    }
+
+    override fun onRefresh() {
+        viewModel.refresh()
     }
 
 }

@@ -45,6 +45,10 @@ class DeviceDataSource(
         supervisorJob.cancel()
     }
 
+    fun refresh() {
+        this.invalidate()
+    }
+
     private suspend fun fetchDevices(): List<Device> {
         state.postValue(RequestState.RUNNING)
 
@@ -59,4 +63,5 @@ class DeviceDataSource(
         Log.e(this.javaClass.simpleName, t.message, t)
         state.postValue(RequestState.ERROR)
     }
+
 }

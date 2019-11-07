@@ -20,4 +20,6 @@ class DeviceDataSourceFactory(
         return ds
     }
 
+    fun getSource() = source.value
+
 }

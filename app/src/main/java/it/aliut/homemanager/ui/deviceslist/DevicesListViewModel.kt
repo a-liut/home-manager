@@ -32,4 +32,8 @@ class DevicesListViewModel(
 
         scope.coroutineContext.cancel()
     }
+
+    fun refresh() {
+        deviceDataSourceFactory.getSource()?.refresh()
+    }
 }
