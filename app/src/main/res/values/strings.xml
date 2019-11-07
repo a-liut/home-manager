@@ -2,4 +2,5 @@
     <string name="app_name">HomeManager</string>
     <string name="deviceitem_lastupdate">Last update:</string>
     <string name="get_devices_error">Cannot get devices!</string>
+    <string name="deviceitem_image_description">Device image</string>
 </resources>

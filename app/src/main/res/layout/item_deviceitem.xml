@@ -1,28 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/deviceitem_padding">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textview_deviceitem_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/deviceitem_padding"
+        android:layout_marginTop="@dimen/deviceitem_padding"
+        android:layout_marginEnd="@dimen/deviceitem_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageview_deviceitem_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Device" />
 
     <TextView
         android:id="@+id/textview_deviceitem_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/textview_deviceitem_name"
+        app:layout_constraintStart_toStartOf="@+id/textview_deviceitem_name"
+        app:layout_constraintTop_toBottomOf="@+id/textview_deviceitem_name"
+        tools:text="192.168.1.158" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textview_deviceitem_lastupdatetitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/deviceitem_lastupdate" />
+        android:layout_marginBottom="@dimen/deviceitem_padding"
+        android:text="@string/deviceitem_lastupdate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textview_deviceitem_lastupdate"
+        app:layout_constraintStart_toStartOf="@+id/textview_deviceitem_address"
+        app:layout_constraintTop_toBottomOf="@id/textview_deviceitem_address" />
 
     <TextView
         android:id="@+id/textview_deviceitem_lastupdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/deviceitem_padding"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_deviceitem_lastupdatetitle"
+        app:layout_constraintEnd_toEndOf="@+id/textview_deviceitem_address"
+        app:layout_constraintStart_toEndOf="@+id/textview_deviceitem_lastupdatetitle"
+        app:layout_constraintTop_toBottomOf="@+id/textview_deviceitem_address"
+        tools:text="10:51 2019-11-06" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/imageview_deviceitem_image"
+        android:layout_width="@dimen/deviceitem_image_size"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/deviceitem_padding"
+        android:layout_marginTop="@dimen/deviceitem_padding"
+        android:contentDescription="@string/deviceitem_image_description"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_deviceitem_lastupdatetitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_memory"
+        tools:srcCompat="@drawable/ic_memory" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
