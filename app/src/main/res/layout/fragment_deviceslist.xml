@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swiperefreshlayout_deviceslist_swiperefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.deviceslist.DevicesListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_deviceslist_list"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_deviceitem"
-        android:layout_height="match_parent" />
+        tools:listitem="@layout/item_deviceitem" />
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
