@@ -1,7 +1,8 @@
-package it.aliut.homemanager
+package it.aliut.homemanager.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import it.aliut.homemanager.R
 import it.aliut.homemanager.ui.deviceslist.DevicesListFragment
 
 class MainActivity : AppCompatActivity() {

@@ -22,7 +22,7 @@ android {
             buildConfigField "String", "HM_BASE_URL", '"http://192.168.1.123:8080"'
         }
         debug {
-            buildConfigField "String", "HM_BASE_URL", '"http://192.168.1.123:8080"'
+            buildConfigField "String", "HM_BASE_URL", '"https://10.0.2.2:6002"'
         }
     }
     testOptions {

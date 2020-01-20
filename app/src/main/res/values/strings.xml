@@ -3,5 +3,8 @@
     <string name="deviceitem_lastupdate">Last update: %1$s</string>
     <string name="get_devices_error">Cannot get devices!</string>
     <string name="deviceitem_image_description">Device image</string>
+    <string name="devicedetails_image_description">Device image</string>
     <string name="menu_refresh">Refresh</string>
+    <string name="devicedata_value">Value: %s</string>
+    <string name="devicedata_unit">Unit: %s</string>
 </resources>

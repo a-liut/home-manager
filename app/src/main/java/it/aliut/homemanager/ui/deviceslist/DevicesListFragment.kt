@@ -1,5 +1,6 @@
 package it.aliut.homemanager.ui.deviceslist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -10,6 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import it.aliut.homemanager.R
 import it.aliut.homemanager.model.Device
 import it.aliut.homemanager.net.RequestState
+import it.aliut.homemanager.ui.DeviceDetailsActivity
 import kotlinx.android.synthetic.main.fragment_deviceslist.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -71,7 +73,11 @@ class DevicesListFragment : Fragment(), DeviceAdapter.OnItemClickListener,
     }
 
     override fun onDeviceClicked(device: Device) {
-        // Do nothing by now
+        val intent = Intent(context, DeviceDetailsActivity::class.java).apply {
+            putExtra(DeviceDetailsActivity.EXTRA_DEVICE_ID, device.id)
+        }
+
+        startActivity(intent)
     }
 
     override fun onRefresh() {

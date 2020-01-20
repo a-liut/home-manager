@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/devicedetails"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.devicedetails.DeviceDetailsFragment">
+
+    <ImageView
+        android:id="@+id/imageview_devicedetails_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/devicedetails_image_description"
+        android:maxHeight="64dp"
+        android:src="@drawable/ic_memory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_memory" />
+
+
+    <TextView
+        android:id="@+id/textview_devicedetails_name"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_devicedetails_image"
+        tools:text="Device" />
+
+    <TextView
+        android:id="@+id/textview_devicedetails_address"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textview_devicedetails_name"
+        app:layout_constraintTop_toBottomOf="@+id/textview_devicedetails_name"
+        tools:text="192.168.1.158" />
+
+    <TextView
+        android:id="@+id/textview_devicedetails_lastupdate"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/deviceitem_lastupdate"
+        app:layout_constraintStart_toStartOf="@+id/textview_devicedetails_address"
+        app:layout_constraintTop_toBottomOf="@+id/textview_devicedetails_address"
+        tools:text="@string/deviceitem_lastupdate" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/recyclerview_devicesdata_datalist"
+        android:layout_marginTop="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_devicedetails_lastupdate"
+        tools:listitem="@layout/item_deviceitem" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

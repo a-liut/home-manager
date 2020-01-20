@@ -4,6 +4,7 @@ import it.aliut.homemanager.BuildConfig
 import it.aliut.homemanager.net.HomeManagerApi
 import it.aliut.homemanager.repository.DataRepository
 import it.aliut.homemanager.repository.DeviceRepository
+import it.aliut.homemanager.ui.devicedetails.DeviceDetailsViewModel
 import it.aliut.homemanager.ui.deviceslist.DevicesListViewModel
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -45,4 +46,5 @@ val netModule = module {
 
 val viewModelModule = module {
     viewModel { DevicesListViewModel(get()) }
+    viewModel { (id: String) -> DeviceDetailsViewModel(id, get()) }
 }

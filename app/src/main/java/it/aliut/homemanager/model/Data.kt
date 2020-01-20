@@ -10,6 +10,6 @@ data class Data(
     @SerializedName("value")
     val value: String,
     @SerializedName("unit")
-    val unit: Boolean
+    val unit: String
 ) {
 }
