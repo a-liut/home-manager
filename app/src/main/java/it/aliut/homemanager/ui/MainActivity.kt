@@ -2,20 +2,26 @@ package it.aliut.homemanager.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import it.aliut.homemanager.R
-import it.aliut.homemanager.ui.deviceslist.DevicesListFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private val navController by lazy { findNavController(R.id.main_navhostfragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, DevicesListFragment.newInstance())
-                .commitNow()
-        }
+        NavigationUI.setupActionBarWithNavController(
+            this,
+            navController
+        )
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
     }
 
 }

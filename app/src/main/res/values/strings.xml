@@ -7,4 +7,6 @@
     <string name="menu_refresh">Refresh</string>
     <string name="devicedata_value">Value: %s</string>
     <string name="devicedata_unit">Unit: %s</string>
+    <string name="title_devices_list">Devices list</string>
+    <string name="title_device_details">Device details</string>
 </resources>

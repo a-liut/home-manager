@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/devicesListFragment">
+
+    <fragment
+        android:id="@+id/devicesListFragment"
+        android:name="it.aliut.homemanager.ui.deviceslist.DevicesListFragment"
+        android:label="@string/title_devices_list"
+        tools:layout="@layout/fragment_deviceslist">
+        <action
+            android:id="@+id/action_devicesListFragment_to_deviceDetailsFragment"
+            app:destination="@id/deviceDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/devicesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deviceDetailsFragment"
+        android:name="it.aliut.homemanager.ui.devicedetails.DeviceDetailsFragment"
+        android:label="@string/title_device_details"
+        tools:layout="@layout/fragment_devicedetails">
+        <argument
+            android:name="deviceId"
+            app:argType="string" />
+    </fragment>
+</navigation>

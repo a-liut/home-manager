@@ -18,12 +18,6 @@ import org.koin.core.parameter.parametersOf
 
 class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener {
 
-    companion object {
-        fun newInstance(deviceId: String) = DeviceDetailsFragment().apply {
-            id = deviceId
-        }
-    }
-
     private lateinit var id: String
 
     private val viewModel: DeviceDetailsViewModel by viewModel { parametersOf(id) }
@@ -34,7 +28,11 @@ class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_devicedetails, container, false)
+        val view = inflater.inflate(R.layout.fragment_devicedetails, container, false)
+
+        id = DeviceDetailsFragmentArgs.fromBundle(arguments!!).deviceId
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
