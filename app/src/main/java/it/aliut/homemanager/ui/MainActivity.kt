@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import it.aliut.homemanager.R
+import kotlinx.android.synthetic.main.appbar.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,10 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        NavigationUI.setupActionBarWithNavController(
-            this,
-            navController
-        )
+        setSupportActionBar(app_bar)
+
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,13 +1,29 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="HomeManagerTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
-        <item name="colorOnPrimary">@color/primaryTextColor</item>
-        <item name="colorSecondary">@color/secondaryColor</item>
-        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
-        <item name="colorOnSecondary">@color/secondaryTextColor</item>
+    <style name="HomeManager" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorTextOnPrimary</item>
+
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryDark</item>
+        <item name="colorOnSecondary">@color/colorTextOnSecondary</item>
+
+        <item name="colorError">#a12</item>
+        <item name="colorOnError">#fff</item>
+
+        <item name="android:statusBarColor">?colorPrimary</item>
     </style>
 
+    <style name="Widget.HomeManager.Toolbar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:theme">?theme</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:titleTextAppearance">@style/Widget.HomeManager.Title</item>
+    </style>
+
+    <style name="Widget.HomeManager.Title" parent="Widget.AppCompat.Toolbar">
+        <item name="android:textColor">@color/colorTextOnPrimary</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
 </resources>

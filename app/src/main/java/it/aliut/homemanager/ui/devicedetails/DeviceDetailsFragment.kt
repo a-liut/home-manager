@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import it.aliut.homemanager.R
 import it.aliut.homemanager.model.Data
@@ -19,6 +20,8 @@ import org.koin.core.parameter.parametersOf
 class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener {
 
     private lateinit var id: String
+
+    private val navController by lazy { findNavController() }
 
     private val viewModel: DeviceDetailsViewModel by viewModel { parametersOf(id) }
 

@@ -17,10 +17,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DevicesListFragment : Fragment(), DeviceAdapter.OnItemClickListener,
     SwipeRefreshLayout.OnRefreshListener {
 
-    companion object {
-        fun newInstance() = DevicesListFragment()
-    }
-
     private val viewModel: DevicesListViewModel by viewModel()
 
     private lateinit var adapter: DeviceAdapter

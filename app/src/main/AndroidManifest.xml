@@ -12,7 +12,7 @@
         android:networkSecurityConfig="@xml/http_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/HomeManagerTheme">
+        android:theme="@style/HomeManager">
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
