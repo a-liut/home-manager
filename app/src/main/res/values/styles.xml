@@ -31,4 +31,8 @@
     <style name="TextAppearance.HomeManager.Subtitle.Collapsed" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textColor">@color/colorTextOnPrimary</item>
     </style>
+
+    <style name="Widget.HomeManager.ListHeader" parent="Widget.MaterialComponents.TextView">
+        <item name="android:padding">5dp</item>
+    </style>
 </resources>

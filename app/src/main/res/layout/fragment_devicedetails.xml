@@ -19,11 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:expandedTitleTextAppearance="@style/TextAppearance.HomeManager.Title"
-            app:expandedSubtitleTextAppearance="@style/TextAppearance.HomeManager.Subtitle"
-            app:collapsedTitleTextAppearance="@style/TextAppearance.HomeManager.Title.Collapsed"
             app:collapsedSubtitleTextAppearance="@style/TextAppearance.HomeManager.Subtitle.Collapsed"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.HomeManager.Title.Collapsed"
             app:contentScrim="?attr/colorPrimary"
+            app:expandedSubtitleTextAppearance="@style/TextAppearance.HomeManager.Subtitle"
+            app:expandedTitleTextAppearance="@style/TextAppearance.HomeManager.Title"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -32,7 +32,6 @@
                 android:layout_height="250dp"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_memory"
                 app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
@@ -46,12 +45,25 @@
         </com.google.android.material.appbar.SubtitleCollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_devicesdata_datalist"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_devicedata" />
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/textview_devicedetails_listheader"
+            style="@style/Widget.HomeManager.ListHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Data" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_devicesdata_datalist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_devicedata" />
+    </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

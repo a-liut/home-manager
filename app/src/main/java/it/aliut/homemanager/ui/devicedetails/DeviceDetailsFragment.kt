@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import it.aliut.homemanager.R
@@ -46,6 +47,16 @@ class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener 
 
         viewModel.devicesData.observe(this, Observer { pagedList ->
             adapter.submitList(pagedList)
+
+            pagedList.addWeakLoadStateListener { _, state, _ ->
+                if (state == PagedList.LoadState.DONE) {
+                    textview_devicedetails_listheader.text = resources.getQuantityString(
+                        R.plurals.devicedetails_data_header,
+                        pagedList.loadedCount,
+                        pagedList.loadedCount
+                    )
+                }
+            }
         })
 
         viewModel.device.observe(this, Observer { device ->
