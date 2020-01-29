@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.squareup.picasso.Picasso
 import it.aliut.homemanager.R
 import it.aliut.homemanager.model.Data
 import it.aliut.homemanager.net.RequestState
@@ -48,6 +49,11 @@ class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener 
         })
 
         viewModel.device.observe(this, Observer { device ->
+            device.pictureUrl?.let { pictureUrl ->
+                Picasso.get()
+                    .load(pictureUrl)
+                    .into(backdrop)
+            }
             collapsing_toolbar.title = device.name
             collapsing_toolbar.subtitle = device.address
         })
