@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import it.aliut.homemanager.R
@@ -30,6 +31,8 @@ class DevicesListFragment : Fragment(), DeviceAdapter.OnItemClickListener,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        toolbar.setupWithNavController(findNavController())
 
         prepareRecyclerView()
         prepareSwipeRefresh()

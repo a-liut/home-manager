@@ -1,7 +1,6 @@
 package it.aliut.homemanager.ui.devicedetails
 
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import it.aliut.homemanager.R
 import it.aliut.homemanager.model.Data
@@ -20,8 +20,6 @@ import org.koin.core.parameter.parametersOf
 class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener {
 
     private lateinit var id: String
-
-    private val navController by lazy { findNavController() }
 
     private val viewModel: DeviceDetailsViewModel by viewModel { parametersOf(id) }
 
@@ -41,18 +39,17 @@ class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        NavigationUI.setupWithNavController(toolbar, findNavController())
+
         prepareRecyclerView()
 
         viewModel.devicesData.observe(this, Observer { pagedList ->
             adapter.submitList(pagedList)
         })
 
-        viewModel.lastUpdate.observe(this, Observer { time ->
-            textview_devicedetails_lastupdate.text = DateUtils.formatDateTime(
-                activity,
-                time,
-                DateUtils.FORMAT_SHOW_TIME or DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_YEAR or DateUtils.FORMAT_SHOW_WEEKDAY or DateUtils.FORMAT_ABBREV_ALL
-            )
+        viewModel.device.observe(this, Observer { device ->
+            collapsing_toolbar.title = device.name
+            collapsing_toolbar.subtitle = device.address
         })
 
         viewModel.state.observe(this, Observer { state ->

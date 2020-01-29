@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/devicesListFragment"
         android:name="it.aliut.homemanager.ui.deviceslist.DevicesListFragment"
-        android:label="@string/title_devices_list"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_deviceslist">
         <action
             android:id="@+id/action_devicesListFragment_to_deviceDetailsFragment"
@@ -22,7 +22,6 @@
     <fragment
         android:id="@+id/deviceDetailsFragment"
         android:name="it.aliut.homemanager.ui.devicedetails.DeviceDetailsFragment"
-        android:label="@string/title_device_details"
         tools:layout="@layout/fragment_devicedetails">
         <argument
             android:name="deviceId"

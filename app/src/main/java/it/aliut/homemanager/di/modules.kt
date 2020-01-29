@@ -46,5 +46,5 @@ val netModule = module {
 
 val viewModelModule = module {
     viewModel { DevicesListViewModel(get()) }
-    viewModel { (id: String) -> DeviceDetailsViewModel(id, get()) }
+    viewModel { (id: String) -> DeviceDetailsViewModel(id, get(), get()) }
 }
