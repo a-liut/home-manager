@@ -74,7 +74,7 @@ class DeviceDetailsFragment : Fragment() {
         override fun getItemCount(): Int = 1
 
         override fun createFragment(position: Int): Fragment = when (position) {
-            0 -> DeviceDataListFragment.newInstance(id)
+            0 -> DeviceDataListFragment.newInstance()
             else -> throw RuntimeException("Invalid position")
         }
     }

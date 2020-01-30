@@ -18,12 +18,8 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class DeviceDataListFragment : Fragment(), DeviceDataAdapter.OnItemClickListener {
 
     companion object {
-        fun newInstance(deviceId: String) = DeviceDataListFragment().apply {
-            this.deviceId = deviceId
-        }
+        fun newInstance() = DeviceDataListFragment()
     }
-
-    private lateinit var deviceId: String
 
     private val deviceDetailsViewModel: DeviceDetailsViewModel by sharedViewModel(from = { parentFragment!! })
 
