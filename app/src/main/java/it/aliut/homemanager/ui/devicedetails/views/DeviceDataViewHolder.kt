@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import it.aliut.homemanager.R
 import it.aliut.homemanager.model.Data
-import it.aliut.homemanager.ui.devicedetails.DeviceDataAdapter
+import it.aliut.homemanager.ui.devicedetails.adapter.DeviceDataAdapter
 import kotlinx.android.synthetic.main.item_devicedata.view.*
 
 class DeviceDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

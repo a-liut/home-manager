@@ -1,4 +1,4 @@
-package it.aliut.homemanager.ui.devicedetails
+package it.aliut.homemanager.ui.devicedetails.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

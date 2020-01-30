@@ -21,7 +21,6 @@ class DeviceDetailsViewModel(
     deviceRepository: DeviceRepository
 ) : ViewModel() {
 
-
     private val scope = CoroutineScope(Dispatchers.IO)
 
     private val deviceDataDataSourceFactory = DeviceDataDataSourceFactory(id, dataRepository, scope)

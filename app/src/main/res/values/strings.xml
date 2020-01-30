@@ -8,6 +8,8 @@
     <string name="devicedata_value">Value: %s</string>
     <string name="devicedata_unit">Unit: %s</string>
     <string name="devicedetails_data_header">Data (%s items)</string>
+    <string name="tab_devicedata">Data</string>
+    <string name="tab_plots">Plots</string>
 
     <plurals name="devicedetails_data_header">
         <item quantity="zero">Data (no items)</item>

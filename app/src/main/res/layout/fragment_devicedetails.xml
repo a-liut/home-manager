@@ -51,19 +51,17 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/textview_devicedetails_listheader"
-            style="@style/Widget.HomeManager.ListHeader"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/viewpager_devicesdetails_tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Data" />
+            android:layout_height="wrap_content" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_devicesdata_datalist"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager_devicesdetails_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_devicedata" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </androidx.viewpager2.widget.ViewPager2>
     </LinearLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

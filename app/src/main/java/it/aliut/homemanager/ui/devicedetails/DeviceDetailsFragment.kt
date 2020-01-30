@@ -9,23 +9,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.paging.PagedList
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import it.aliut.homemanager.R
-import it.aliut.homemanager.model.Data
 import it.aliut.homemanager.net.RequestState
 import kotlinx.android.synthetic.main.fragment_devicedetails.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener {
+class DeviceDetailsFragment : Fragment() {
 
     private lateinit var id: String
 
     private val viewModel: DeviceDetailsViewModel by viewModel { parametersOf(id) }
-
-    private lateinit var adapter: DeviceDataAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,22 +40,6 @@ class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener 
 
         NavigationUI.setupWithNavController(toolbar, findNavController())
 
-        prepareRecyclerView()
-
-        viewModel.devicesData.observe(this, Observer { pagedList ->
-            adapter.submitList(pagedList)
-
-            pagedList.addWeakLoadStateListener { _, state, _ ->
-                if (state == PagedList.LoadState.DONE) {
-                    textview_devicedetails_listheader.text = resources.getQuantityString(
-                        R.plurals.devicedetails_data_header,
-                        pagedList.loadedCount,
-                        pagedList.loadedCount
-                    )
-                }
-            }
-        })
-
         viewModel.device.observe(this, Observer { device ->
             device.pictureUrl?.let { pictureUrl ->
                 Picasso.get()
@@ -74,19 +55,28 @@ class DeviceDetailsFragment : Fragment(), DeviceDataAdapter.OnItemClickListener 
                 Toast.makeText(context, "Cannot get device's data", Toast.LENGTH_LONG).show()
             }
         })
+
+        viewpager_devicesdetails_pager.adapter = DeviceDetailsPagerAdapter(this)
+        TabLayoutMediator(
+            viewpager_devicesdetails_tab_layout,
+            viewpager_devicesdetails_pager
+        ) { tab, position ->
+            tab.text = when (position) {
+                0 -> getString(R.string.tab_devicedata)
+                1 -> getString(R.string.tab_plots)
+                else -> ""
+            }
+        }.attach()
     }
 
-    private fun prepareRecyclerView() {
-        recyclerview_devicesdata_datalist.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+    private inner class DeviceDetailsPagerAdapter(fragment: Fragment) :
+        FragmentStateAdapter(fragment) {
+        override fun getItemCount(): Int = 1
 
-        adapter = DeviceDataAdapter(this)
-
-        recyclerview_devicesdata_datalist.adapter = adapter
-    }
-
-    override fun onDeviceDataClicked(data: Data) {
-        // Do nothing, by now
+        override fun createFragment(position: Int): Fragment = when (position) {
+            0 -> DeviceDataListFragment.newInstance(id)
+            else -> throw RuntimeException("Invalid position")
+        }
     }
 
 }
