@@ -1,6 +1,7 @@
 package it.aliut.homemanager.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class Data(
     @SerializedName("id")
@@ -10,6 +11,8 @@ data class Data(
     @SerializedName("value")
     val value: String,
     @SerializedName("unit")
-    val unit: String
+    val unit: String,
+    @SerializedName("created_at")
+    val createdAt: Date
 ) {
 }
